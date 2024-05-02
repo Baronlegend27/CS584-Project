@@ -23,3 +23,7 @@ run: ```pip install seaborn psycopg2-binary scikit-learn```
 7. Find the results in the code folder. After running, there should now be 5 csv files
 8. Look at modCompare.csv to check how accurate the predictions are compared to the known labels
 9. Look at toResult.csv to see what labels the model has given to the unknown
+   - How to understand: Info in the table: output_id, result, avg_cluster
+     - output_id is just the id of the transactions
+     - result is the given labels: 0 if false (fraud), 1 if true (legit), 2 if left empty (unknown)
+     - avg_cluster is the average of the clustering and labeling. If this value is greater then 0.5, it is labeled as legit, otherwise fraud
