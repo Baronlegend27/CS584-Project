@@ -1,4 +1,3 @@
-# Use an official Python runtime as a parent image
 FROM continuumio/miniconda3
 
 # Set the working directory in the container to /app
@@ -14,4 +13,4 @@ RUN conda env create -f requirements.yaml
 EXPOSE 80
 
 # Run Start.py when the container launches
-CMD ["python", "Start.py"]
+CMD ["tail", "-f", "/dev/null"]

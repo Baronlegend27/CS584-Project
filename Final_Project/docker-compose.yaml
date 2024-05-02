@@ -16,7 +16,6 @@ services:
       - "8000:80"             # Mapping container port 80 to host port 8000
     depends_on:
       - db
-    # Add additional configuration here if needed
 
 volumes:
   db_data:
