@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    build: ./DataBase               # Path to the directory containing the Dockerfile for the database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: project
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+
+  app:
+    build: ./Code              # Path to the directory containing the Dockerfile for the application
+    ports:
+      - "8000:80"             # Mapping container port 80 to host port 8000
+    depends_on:
+      - db
+    # Add additional configuration here if needed
+
+volumes:
+  db_data:
