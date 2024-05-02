@@ -20,3 +20,8 @@ dependencies:
   - tzdata=2024a
   - wheel=0.43.0
   - xz=5.2.6
+  - seaborn
+  - scikit-learn
+  - numpy
+  - matplotlib
+  - pandas
