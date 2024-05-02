@@ -5,7 +5,7 @@ FROM continuumio/miniconda3
 WORKDIR /app
 
 # Add the current directory contents into the container at /app
-ADD . /app
+ADD .. /app
 
 # Create a conda environment and install any needed packages specified in requirements.yaml
 RUN conda env create -f requirements.yaml
