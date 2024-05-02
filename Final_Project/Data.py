@@ -1,10 +1,13 @@
 import psycopg2
 import random
-from payments import generate_fake_payment
+from Payment import generate_fake_payment
 from Val_gen import sorted_random_times, select_and_remove, random_location
 from Purchase import Purchase
 import pickle
 
+account_number = 500
+num_payment = None
+num_purchase = None
 # Connect to PostgreSQL database
 conn = psycopg2.connect(
     host="localhost",
@@ -19,6 +22,15 @@ start_location = (0, 0)
 Purchase.init(start_location)
 
 cursor = conn.cursor()
+
+cursor.execute("TRUNCATE TABLE account, purchase RESTART IDENTITY CASCADE")
+
+
+# Insert rows into the 'account' table
+for i in range(account_number):
+    cursor.execute("INSERT INTO account (balance,payments,purchases,median) VALUES (0, 0, 0, 0)")
+
+conn.commit()
 
 # Fetch account IDs from the database
 cursor.execute("SELECT account_id FROM account")
@@ -36,8 +48,8 @@ none = []
 rand_int = lambda start, end: random.randint(start, end)
 
 # Number of payments and purchases per account
-pay_count = 5
-pur_count = 50
+pay_count = 25
+pur_count = 25
 total_items = pay_count + pur_count
 
 # Loop through account IDs

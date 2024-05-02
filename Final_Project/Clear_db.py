@@ -1,6 +1,6 @@
 import psycopg2
-from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
+# Connect to PostgreSQL database
 conn = psycopg2.connect(
     host="localhost",
     database="project",
@@ -9,30 +9,26 @@ conn = psycopg2.connect(
     port="5433"
 )
 
-# Set the isolation level for this connection's cursors
-# Will automatically commit all changes
-conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-
+# Create a cursor
 cursor = conn.cursor()
 
-# Get all table names
-cursor.execute("""SELECT table_name FROM information_schema.tables
-   WHERE table_schema = 'public'""")
+cursor.execute("DELETE FROM output;")
+conn.commit()
 
-tables = cursor.fetchall()
+# Delete data from the purchase table
+cursor.execute("DELETE FROM purchase;")
+conn.commit()
 
-print("Database Structure:")
-for table in tables:
-    print("Table Name: ", table[0])
-    cursor.execute(f"SELECT column_name, data_type FROM information_schema.columns WHERE table_name = '{table[0]}';")
-    columns = cursor.fetchall()
-    for column in columns:
-        print(f"Column Name: {column[0]}, Data Type: {column[1]}")
+# Delete data from the payment table
+cursor.execute("DELETE FROM payment;")
+conn.commit()
 
-print("\nDeleting all entries from all tables...")
-for table in tables:
-    cursor.execute(f"DELETE FROM {table[0]};")
-    print(f"All entries from {table[0]} have been deleted.")
+# Delete data from the account table
+cursor.execute("DELETE FROM account;")
+conn.commit()
 
+# Close cursor and connection
 cursor.close()
 conn.close()
+
+print("Successful clearing of all data")
