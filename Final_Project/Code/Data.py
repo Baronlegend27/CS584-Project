@@ -4,10 +4,18 @@ from Payment import generate_fake_payment
 from Val_gen import sorted_random_times, select_and_remove, random_location
 from Purchase import Purchase
 import pickle
+import sys
 
-account_number = 500
-num_payment = None
-num_purchase = None
+args = sys.argv[1:]
+
+if len(args) != 3 or int(arg[0]) < 0 or int(arg[1]) < 0 or int(arg[2]) < 0:
+    print("error in data gen input")
+    sys.exit()
+
+account_number = arg[0]
+num_payment = arg[1]
+num_purchase = arg[2]
+
 # Connect to PostgreSQL database
 conn = psycopg2.connect(
     host="localhost",
