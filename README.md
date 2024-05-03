@@ -18,13 +18,17 @@ We couldnt get it to connect with the cloud so we had to just go with manually c
    1. Have seaborn, psycopg2-binary, and scikit-learn installed ```pip install seaborn psycopg2-binary scikit-learn```
    2. Go into db_config.json and fill in your postgres login info
 4. Running Code
-   1. Run ```python Start.py```
-   2. When prompted with questions on data generation, type desired amount and press enter
-      - The amount entered should be a positive value
-      - The amount of perchases and payments should be roughly the same or at least very close
-      - The amount of accounts should also be less then payments and perchases 
-   3. When the terminal's prompter returns, that means that the program has finished running
-5. Looking at the results
+   - Generate data and run
+      1. Run ```python Start.py```
+      2. When prompted with questions on data generation, type desired amount and press enter
+         - The amount entered should be a positive value
+         - The amount of perchases and payments should be roughly the same or at least very close
+         - The amount of accounts should also be less then payments and perchases 
+      3. When the terminal's prompter returns, that means that the program has finished running
+   - Run using already generated data
+     1. make sure there is a output.csv inside the folder code, can use one of the sample csv but **make sure to rename it**
+     2. Run ```python ML.py```
+6. Looking at the results
    1. Find the results in the code folder. After running, there should now be 5 csv files and a png
    2. Look at *modCompare.csv* to check how accurate the predictions are compared to the known labels
    3. Look at *toResult.csv* to see what labels the model has given to the unknown
