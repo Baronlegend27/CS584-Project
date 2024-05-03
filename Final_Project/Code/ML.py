@@ -131,9 +131,9 @@ df_filled = pd.read_csv('modCompare.csv')
 results(df_null, df_filled, True)
 
 # Print accuracy?
-filtered_df = df_filled[df_filled.iloc[:, 2] != 2]
+filtered_df = df_filled[df_filled.iloc[:, 1] != 2]
 
-filtered_df['guess'] = (filtered_df.iloc[:, 2] < 0.5).astype(int)
+filtered_df['guess'] = (filtered_df.iloc[:, 1] < 0.5).astype(int)
 percentage = (filtered_df['guess'] == filtered_df['result']).mean() * 100
 
 df_acc = filtered_df[['output_id', 'result', 'guess']]
