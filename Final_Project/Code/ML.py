@@ -133,4 +133,4 @@ results(df_null, df_filled, True)
 # Print accuracy?
 df_filled['new_col'] = (df_filled.iloc[:, 1] > 0.5).astype(int)
 percentage = (df_filled['new_col'] == df_filled['result']).mean() * 100
-print("Accuracy (Percentage of time when predicted matched actual label): {}%".format(percentage))
+print("\nAccuracy (Percentage of time when predicted matched actual label): {}%\n".format(percentage))
