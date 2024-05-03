@@ -1,0 +1,11 @@
+We both worked on our CS 584 project titled "Credit Card Fraud Detection." Initially, we used Docker containers to manage our database, hoping for simplicity. However, we quickly ran into compatibility issues, spending significant time troubleshooting.
+
+To improve our setup, we transitioned our project to the AWS cloud, seeking simplicity. Yet, navigating AWS proved daunting, and the relational database service we selected didn't function as smoothly as anticipated, leading to struggles.
+
+Eventually, we decided to use PJadmin, which was a simple yet efficient way of working on the project.
+
+Initially, we struggled to find a reliable source of credit card transaction data suitable for training our model. While some publicly available datasets existed, they were often outdated or lacked the volume and diversity necessary for robust model training. We spent considerable time searching for suitable data sources, only to encounter dead ends.
+
+Crafting realistic fraudulent transactions required a delicate balance between mimicking real-world fraud patterns and ensuring that the generated data didn't deviate too far from actual scenarios.
+
+On the other hand, generating non-fraudulent data posed its own set of difficulties. While legitimate transactions vastly outnumber fraudulent ones, ensuring that the generated data accurately represented typical consumer behavior without introducing biases was no easy feat. We had to carefully consider factors such as transaction frequency, amounts, and merchant types to create a diverse and representative dataset.
