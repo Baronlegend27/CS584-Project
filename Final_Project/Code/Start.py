@@ -1,4 +1,5 @@
 import subprocess
+import sys
 
 print("\nStarting program\n")
 
@@ -39,6 +40,13 @@ try:
     subprocess.run(["python","Output.py"], check = True)
 except:
     print("Error in generating output")
+    if exit_except:
+        sys.exit()
+
+try:
+    subprocess.run(["python","genOutput.py"], check = True)
+except:
+    print("Error in saving output")
     if exit_except:
         sys.exit()
 
