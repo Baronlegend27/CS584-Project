@@ -129,3 +129,8 @@ results(df_null, df_filled, False)
 modified_compare(df_filled)
 df_filled = pd.read_csv('modCompare.csv')
 results(df_null, df_filled, True)
+
+# Print accuracy?
+df_filled['new_col'] = (df_filled.iloc[:, 1] > 0.5).astype(int)
+percentage = (df_filled['new_col'] == df_filled['result']).mean() * 100
+print("Accuracy (Percentage of time when predicted matched actual label): {}%".format(percentage))
