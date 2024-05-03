@@ -5,24 +5,28 @@ from Val_gen import sorted_random_times, select_and_remove, random_location
 from Purchase import Purchase
 import pickle
 import sys
+import json
+
+with open('db_config.json', 'r') as file:
+    json = json.load(file)
 
 args = sys.argv[1:]
 
-if len(args) != 3 or int(arg[0]) < 0 or int(arg[1]) < 0 or int(arg[2]) < 0:
+if len(args) != 3 or int(args[0]) < 0 or int(args[1]) < 0 or int(args[2]) < 0:
     print("error in data gen input")
     sys.exit()
 
-account_number = arg[0]
-num_payment = arg[1]
-num_purchase = arg[2]
+account_number = int(args[0])
+num_payment = int(args[1])
+num_purchase = int(args[2])
 
 # Connect to PostgreSQL database
 conn = psycopg2.connect(
-    host="localhost",
-    database="project",
-    user="postgres",
-    password="123",
-    port="5433"
+    host=json["host"],
+    database=json["database"],
+    user=json["user"],
+    password=json["password"],
+    port=json["port"]
 )
 
 # Initialize starting location for purchases
