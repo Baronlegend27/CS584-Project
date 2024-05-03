@@ -135,6 +135,6 @@ df_filled['guess'] = (df_filled.iloc[:, 2] > 0.5).astype(int)
 percentage = (df_filled['guess'] == df_filled['result']).mean() * 100
 
 df_acc = df_filled[['output_id', 'result', 'guess']]
-df_filled.to_csv('testAcc.csv', index = False)
+df_acc.to_csv('testAcc.csv', index = False)
 
 print("\nAccuracy (Percentage of time when predicted matched actual label): {}%\n".format(percentage))
