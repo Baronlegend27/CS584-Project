@@ -37,8 +37,3 @@ class Purchase:
         cls.prior_location = location
 
         return amount, currency, time, construct_point(location), product_category, index, result
-
-
-
-
-

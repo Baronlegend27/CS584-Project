@@ -1,12 +1,16 @@
 import psycopg2
+import json
+
+with open('db_config.json', 'r') as file:
+    json = json.load(file)
 
 # Connect to PostgreSQL database
 conn = psycopg2.connect(
-    host="localhost",
-    database="project",
-    user="postgres",
-    password="123",
-    port="5433"
+    host=json["host"],
+    database=json["database"],
+    user=json["user"],
+    password=json["password"],
+    port=json["port"]
 )
 
 # Create a cursor

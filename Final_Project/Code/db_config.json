@@ -1,0 +1,7 @@
+{
+    "host":"localhost",
+    "database":"projFraud",
+    "user":"postgres",
+    "password":"Zxc1032002",
+    "port":"5432"
+}

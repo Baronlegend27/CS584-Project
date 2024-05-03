@@ -1,8 +1,11 @@
 import statistics
 import psycopg2
-from Final_Project.Code.Bookkeeping import DisTime
+from Bookkeeping import DisTime
 from decimal import Decimal
+import json
 
+with open('db_config.json', 'r') as file:
+    json = json.load(file)
 
 def assign_currency_probabilities(currency_dict):
     total_sum = sum(currency_dict.values())
@@ -49,11 +52,11 @@ def make_pairs(numbers):
     return pairs
 
 conn = psycopg2.connect(
-    host="localhost",
-    database="project",
-    user="postgres",
-    password="123",
-    port="5433"
+    host=json["host"],
+    database=json["database"],
+    user=json["user"],
+    password=json["password"],
+    port=json["port"]
 )
 cursor = conn.cursor()
 cursor.execute("SELECT COUNT(*) FROM account")
@@ -118,5 +121,3 @@ for p in output:
 conn.commit()
 cursor.close()
 conn.close()
-
-
