@@ -1,13 +1,7 @@
 import random
 from datetime import datetime, timedelta
-from faker import Faker
 import numpy as np
 import math
-
-
-
-
-fake = Faker()
 
 merchants = ["ecommerce","department store","convenience store","luxury", "other"]
 
